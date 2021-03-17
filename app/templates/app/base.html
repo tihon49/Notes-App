@@ -31,16 +31,7 @@
         {% block content %}
         {% endblock %}
     {% else %}
-        <div class="container">
-            <div class="row col-10 offset-1 mt-5" style="text-align: center; color: white;">
-                Для доступка к приложению необходимо авторизоваться
-            </div>
-            <div class="row col-10 offset-1 mt-3">
-                <button class="btn btn-warning" onclick="location.href='{% url 'login' %}'">
-                    Авторизоваться
-                </button>
-            </div>
-        </div>
+        {% include 'account/login.html' %}
     {% endif %}
 
 <!--</div>>-->
