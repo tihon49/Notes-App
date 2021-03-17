@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row col-10 offset-1">
+        <button onclick="location.href='{% url 'home' %}'" class="btn btn-info" type="button"
+                style="margin: 10px 0;">
+            назад на главную
+        </button>
+    </div>
+
+    <div class="row col-10 offset-1">
+        <button onclick="location.href='{% url 'add_product' note_pk=note.pk  %}'" type="button"
+            class="btn btn-info">
+            добавить продукт в заметку: <br> "<span id="note-name">{{ note }}</span>"
+        </button>
+    </div>
+
+    <hr>
+
+    {% verbatim %}
+        <div class="content-box" style="padding: 0 10px;" id="app">
+            <div class="row d-flex"
+                 style="background-color: #74cfbf; border-radius: 4px; padding: 10px 0; margin-bottom: 10px;
+                        justify-content: space-between; align-items: center;"
+                 v-for="(obj, index) in note.products">
+                <div class="col-1" style="padding-left: 8px;">
+                    <button type="button" class="btn btn-danger"
+                            @click.stop="productDelete(obj.id, index)">
+<!--                        onclick="location.href='{% url 'delete_product' product_pk=obj.pk  %}'">-->
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <div class="d-flex col-10"
+                     style="justify-content: space-between; border: 1px solid darkslategray; border-radius: 4px; margin: 0 5px;
+                            align-items: center; padding: 10px 5px;"
+                     @click.stop="productCompleted(obj.id, index)"
+                     :class="{'completed': obj.completed}">
+                    <div class="col-7">
+                         {{ obj.name }}
+                    </div>
+                    <div class="col-1">{{ obj.count }}</div>
+                    <div class="col-1" style="margin: 0 10px;">{{ obj.value }}</div>
+                </div>
+            </div>
+        </div>
+    {% endverbatim %}
+
+</div>
+{% endblock %}

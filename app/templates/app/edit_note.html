@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row col-12 mx-auto">
+        <form action="" method="post" class="mb-3">
+            <button onclick="location.href='{% url 'home' %}'" type="button" class="btn btn-info col-12"
+                    style="margin-bottom: 15px;">
+                назад на главную
+            </button>
+            {% csrf_token %}
+            {% for field in form %}
+                <div style="color: white; text-align: center;">
+                    {{ field.label }}
+                </div>
+                {{ field }}
+            {% endfor %}
+            <button class="btn btn-success form-control mt-3" style="color: black;" type="submit">сохранить</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

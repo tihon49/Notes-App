@@ -1,0 +1,11 @@
+* {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.container {
+    padding-top: 10px;
+}
+
+.completed {
+    text-decoration: line-through;
+}
