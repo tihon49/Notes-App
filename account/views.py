@@ -7,6 +7,7 @@ from .forms import CreateUserForm
 
 def registration_view(request):
     """страница регистрации аккаунта"""
+
     template = 'account/registration.html'
     form = CreateUserForm()
 
@@ -26,12 +27,13 @@ def registration_view(request):
 
 def login_view(request):
     """страница авторизации"""
+
     template = 'account/login.html'
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
             return redirect('home')

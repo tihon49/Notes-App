@@ -23,7 +23,7 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
 </head>
-<body style="font-family: Roboto; background-color: darkslategray;">
+<body style="font-family: Roboto; background-color: darkslategray; height: 100%;">
 <!-- #5eb5a6 -->
 
 <!--<div class="container" id="app">-->
@@ -31,7 +31,7 @@
         {% block content %}
         {% endblock %}
     {% else %}
-        {% include 'account/login.html' %}
+        {% include 'account/notAuthenticated.html' %}
     {% endif %}
 
 <!--</div>>-->
